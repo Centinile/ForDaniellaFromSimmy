@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Valentines with Dandan</title>
+    <title>For Daniellaaaa</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -73,6 +73,22 @@
         display: grid;
         gap: 18px;
         justify-items: center;
+      }
+
+      .line {
+        display: block;
+      }
+
+      .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 6px;
+      }
+
+      .list li::before {
+        content: "• ";
       }
 
       .step.active {
@@ -165,7 +181,7 @@
           position: static;
           transform: none;
           width: min(300px, 78vw);
-          max-height: 180px;
+          max-height: 200px;
         }
 
         h1 {
@@ -191,13 +207,12 @@
     <main class="card">
       <section class="flow">
         <div class="step active" data-step="1">
-          <img class="gif" src="gifs/gif1.gif" alt="Cute valentine" />
+          <img class="gif" src="gifs/gif1.gif" alt="Hellooo" />
           <div class="content">
             <h1>
               Hi Daniellaaaa!!
-              <br />MY CUTE BABYYYY!!!!
+              <span class="line">MY CUTE BABYYYY!!!!</span>
             </h1>
-            <br>
             <div class="actions">
               <button class="primary" type="button" data-next>
                 Click Me :)))
@@ -207,13 +222,12 @@
         </div>
 
         <div class="step" data-step="2">
-          <img class="gif" src="gifs/gif2.gif" alt="Sweet surprise" />
+          <img class="gif" src="gifs/gif2.gif" alt=":0000" />
           <div class="content">
             <h1>
               Malapit na February 14!
-              <br> amblis noh? :000
+              <span class="line">amblis noh? :000</span>
             </h1>
-            <br>
             <div class="actions">
               <button class="primary" type="button" data-next>
                 Anumeron
@@ -223,15 +237,14 @@
         </div>
 
         <div class="step" data-step="3">
-          <img class="gif" src="gifs/gif3.gif" alt="Soft hearts" />
+          <img class="gif" src="gifs/gif3.gif" alt="huhu" />
           <div class="content">
             <h1>
               And I just want to ask you...
             </h1>
-            <br>
             <div class="actions">
               <button class="primary" type="button" data-next>
-                Ano ngani
+                What do you want?
               </button>
             </div>
           </div>
@@ -247,13 +260,12 @@
           <div class="content">
             <h1>WILL YOU BE MY VALENTINE?</h1>
             <p id="plea-text">Say yes plsplspls.</p>
-            <br>
             <div class="actions">
               <button class="primary" type="button" data-yes>
-                Yes hihi
+                Yes
               </button>
               <button class="secondary" type="button" data-no>
-                Ayaw ko nga
+                No
               </button>
             </div>
           </div>
@@ -263,8 +275,102 @@
           <img class="gif" src="gifs/finalgif.gif" alt="Happy valentines po!!!!" />
           <div class="content">
             <h1>YAYYYY!!!</h1>
-            <p>Can't wait to celebrate with you. I love you!</p>
-            <br>
+            <p>Baby thank you poooo, I love you so much!</p>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Ano ngayon
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="6">
+          <img class="gif" src="gifs/plan.gif" alt="YESSS" />
+          <div class="content">
+            <h1>Ako na ang magpaplano!!</h1>
+            <p>Yes di mo na need masyado magisip pa, ako na bahala!</p>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                kk
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="7">
+          <img class="gif" src="gifs/pack.gif" alt="Plan Time" />
+          <div class="content">
+            <h1>What you need</h1>
+            <ul class="list">
+              <li>Bring mo lang po yung exchange gifts if kaya, if hindi we can compromise.</li>
+              <li>Suot ka Gray na damit hehe.</li>
+              <li>Yourself syempreeee.</li>
+            </ul>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                lupwet
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="8">
+          <img class="gif" src="gifs/travel.gif" alt="Plan Time" />
+          <div class="content">
+            <h1>Where we will go</h1>
+            <ul class="list">
+              <li>I have thought of a few options na po.</li>
+              <li>Di ko muna sabihin hehe, pero dipende rin sa situation kung ano gagawin natin huhu.</li>
+              <li>Sana talaga magustuhan mo, I really want this to be fun for us.</li>
+            </ul>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Okiee
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="9">
+          <img class="gif" src="gifs/yum.gif" alt="Plan Time" />
+          <div class="content">
+            <h1>Where we will eat</h1>
+            <ul class="list">
+              <li>MANG INASAL!!</li>
+              <li>Sobrang crave mo yan recently HAHAHA</li>
+              <li>I want to try other places pero syempre dun muna tayo sa alam kong gusto mo.</li>
+            </ul>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Sarap
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="10">
+          <img class="gif" src="gifs/huhu.gif" alt="Plan Time" />
+          <div class="content">
+            <h1>If ever di magawa lahat ng Feb 14</h1>
+            <ul class="list">
+              <li>Try natin gawin yung iba sa Feb 15, syempre if okay lang po sayo.</li>
+              <li>Galing ka din po sa game so sobrang pagod ka non huhu.</li>
+              <li>I just want us to enjoy valentines together so I hope na di tayo ma-stress sa schedule hehe.</li>
+            </ul>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Yett
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="11">
+          <img class="gif" src="gifs/mwahh.gif" alt="Plan Time" />
+          <div class="content">
+            <h1>I Love You Baby koooo</h1>
+            <p>Thank you po for agreeing to see me on Valentine's. I'll try my best to make it a nice and fun day for you.</p>
+            <p>Pahinga ka ng maigi and get well soon po, I wish you the best sa lahat!</p>
             <div class="actions">
               <button class="primary" type="button" data-restart>
                 Replay
@@ -272,6 +378,7 @@
             </div>
           </div>
         </div>
+
       </section>
     </main>
 
@@ -308,42 +415,56 @@
         {
           text: "Say yes plsplspls.",
           gif: "gifs/gif4.gif",
+          yesLabel: "Yes",
+          noLabel: "No",
           yesScale: 1,
           noScale: 1,
         },
         {
-          text: "Oh nooo, are you sure?",
+          text: "Grabe siya ohhh",
           gif: "gifs/no1.gif",
+          yesLabel: "Yes po",
+          noLabel: "Ayaw",
           yesScale: 1.3,
           noScale: 0.85,
         },
         {
-          text: "Please say yes. I will be so happy!",
+          text: "Hala baby.... ",
           gif: "gifs/no2.gif",
+          yesLabel: "Okay yes",
+          noLabel: "Ayaw ko ngani",
           yesScale: 1.6,
           noScale: 0.7,
         },
         {
-          text: "One tiny yes? pretty please?",
+          text: "Yes na po please?",
           gif: "gifs/no3.gif",
+          yesLabel: "Yes na",
+          noLabel: "Still no",
           yesScale: 2.0,
           noScale: 0.55,
         },
         {
           text: "Last chance... say yes?",
           gif: "gifs/no4.gif",
+          yesLabel: "YES",
+          noLabel: "Nooo",
           yesScale: 2.4,
           noScale: 0.4,
         },
         {
-          text: "Okay, you win. Just press yes now.",
+          text: "NOOO PLEAAASEEE SAY YES NA POOOOO",
           gif: "gifs/no5.gif",
+          yesLabel: "YES PLEASE",
+          noLabel: "Hindi pa rin",
           yesScale: 2.8,
           noScale: 0.25,
         },
         {
-          text: "Okay okay, YES is the only choice now!",
+          text: "Wala bawal na tumanggi hehe >:)))",
           gif: "gifs/no6.gif",
+          yesLabel: "OO NA",
+          noLabel: "No",
           yesScale: 3.2,
           noScale: 0.2,
         },
@@ -371,6 +492,8 @@
         const state = noStates[noCount];
         pleaText.textContent = state.text;
         questionGif.src = state.gif;
+        yesButton.textContent = state.yesLabel;
+        noButton.textContent = state.noLabel;
         applyScale(yesButton, yesBase, state.yesScale);
         applyScale(noButton, noBase, state.noScale);
         actions.classList.toggle("stacked", state.yesScale >= 2.0);
@@ -384,6 +507,8 @@
         const state = noStates[0];
         pleaText.textContent = state.text;
         questionGif.src = state.gif;
+        yesButton.textContent = state.yesLabel;
+        noButton.textContent = state.noLabel;
         applyScale(yesButton, yesBase, state.yesScale);
         applyScale(noButton, noBase, state.noScale);
         actions.classList.remove("stacked");
