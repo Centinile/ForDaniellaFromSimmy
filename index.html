@@ -1,9 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valentines with Dandan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --petal: #e8fcfb;
+        --warm: #c9f2f0;
+        --teal-dark: #0f6f6c;
+        --teal: #1fbab6;
+        --teal-light: #dff7f6;
+        --ink: #114645;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(900px 520px at 10% 18%, rgba(69, 214, 210, 0.35) 0%, transparent 65%),
+          radial-gradient(900px 520px at 90% 12%, rgba(31, 186, 182, 0.32) 0%, transparent 65%),
+          radial-gradient(760px 520px at 50% 90%, rgba(15, 111, 108, 0.18) 0%, transparent 70%),
+          linear-gradient(160deg, #e7fffe 0%, #c3f1ef 100%);
+        color: var(--ink);
+        font-family: "Playpen Sans", sans-serif;
+        padding: 32px 16px;
+      }
+
+      .card {
+        width: 720px;
+        height: 520px;
+        max-width: 92vw;
+        max-height: 92vh;
+        background: transparent;
+        border-radius: 0;
+        padding: 56px clamp(24px, 6vw, 64px);
+        box-shadow: none;
+      }
+
+      .flow {
+        display: grid;
+        gap: 24px;
+        text-align: center;
+        height: 100%;
+      }
+
+      .step {
+        display: none;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .content {
+        display: grid;
+        gap: 18px;
+        justify-items: center;
+      }
+
+      .step.active {
+        display: flex;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(30px, 5vw, 42px);
+        color: var(--teal-dark);
+      }
+
+      .gif {
+        width: min(230px, 60vw);
+        height: auto;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.7;
+        font-size: clamp(16px, 2.4vw, 18px);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: auto;
+      }
+
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 26px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .primary {
+        background: linear-gradient(135deg, #45d6d2, var(--teal));
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(31, 186, 182, 0.25);
+      }
+
+      .secondary {
+        background: var(--teal-light);
+        color: var(--teal-dark);
+        box-shadow: 0 10px 18px rgba(31, 186, 182, 0.15);
+      }
+
+      button:hover {
+        transform: translateY(-2px) scale(1.03);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+    </style>
   </head>
   <body>
-    
+    <main class="card">
+      <section class="flow">
+        <div class="step active" data-step="1">
+          <img class="gif" src="gifs/gif1.gif" alt="Cute valentine" />
+          <div class="content">
+            <h1>
+              Hi Daniellaaaa!!
+              <br />MY CUTE BABYYYY!!!!
+            </h1>
+            <br>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Click Me :)))
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="2">
+          <img class="gif" src="gifs/gif2.gif" alt="Sweet surprise" />
+          <div class="content">
+            <h1>
+              Malapit na Febuary 14 :0000
+            </h1>
+            <br>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Anumeron
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="3">
+          <img class="gif" src="gifs/gif3.gif" alt="Soft hearts" />
+          <div class="content">
+            <h1>
+              And I just want to ask you if...
+            </h1>
+            <br>
+            <div class="actions">
+              <button class="primary" type="button" data-next>
+                Ano ngani
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <img class="gif" src="gifs/gif4.gif" alt="Big question" />
+          <div class="content">
+            <h1>WILL YOU BE MY VALENTINE?</h1>
+            <p>Say yes plsplspls.</p>
+            <br>
+            <div class="actions">
+              <button class="primary" type="button" data-yes>
+                Yes hihi
+              </button>
+              <button class="secondary" type="button" data-no>
+                Ayaw ko nga
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const steps = Array.from(document.querySelectorAll("[data-step]"));
+      const nextButtons = document.querySelectorAll("[data-next]");
+      const yesButton = document.querySelector("[data-yes]");
+      const noButton = document.querySelector("[data-no]");
+      let currentStep = 0;
+
+      const setStep = (index) => {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        currentStep = index;
+      };
+
+      nextButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setStep(Math.min(currentStep + 1, steps.length - 1));
+        });
+      });
+
+      yesButton.addEventListener("click", () => {
+        yesButton.textContent = "Yay!";
+      });
+
+      noButton.addEventListener("click", () => {
+        noButton.textContent = "Try again";
+      });
+    </script>
   </body>
 </html>
