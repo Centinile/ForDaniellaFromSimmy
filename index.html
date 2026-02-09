@@ -411,6 +411,13 @@
         button.style.padding = `${base.padY * scale}px ${base.padX * scale}px`;
       };
 
+      const preloadImages = (urls) => {
+        urls.forEach((url) => {
+          const img = new Image();
+          img.src = url;
+        });
+      };
+
       const noStates = [
         {
           text: "Say yes plsplspls.",
@@ -469,6 +476,26 @@
           noScale: 0.2,
         },
       ];
+
+      preloadImages([
+        "gifs/gif1.gif",
+        "gifs/gif2.gif",
+        "gifs/gif3.gif",
+        "gifs/gif4.gif",
+        "gifs/finalgif.gif",
+        "gifs/plan.gif",
+        "gifs/pack.gif",
+        "gifs/travel.gif",
+        "gifs/yum.gif",
+        "gifs/huhu.gif",
+        "gifs/mwahh.gif",
+        "gifs/no1.gif",
+        "gifs/no2.gif",
+        "gifs/no3.gif",
+        "gifs/no4.gif",
+        "gifs/no5.gif",
+        "gifs/no6.gif",
+      ]);
 
       const setStep = (index) => {
         steps.forEach((step, i) => {
