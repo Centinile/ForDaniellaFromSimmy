@@ -91,7 +91,7 @@
         left: 50%;
         transform: translateX(-50%);
         width: min(330px, 60vw);
-        max-height: 220px;
+        max-height: 230px;
         height: auto;
       }
 
@@ -109,9 +109,14 @@
         margin-top: auto;
       }
 
+      .actions.stacked {
+        flex-direction: column;
+        align-items: center;
+      }
+
       button {
         border: none;
-        border-radius: 999px;
+        border-radius: 0.6em;
         padding: 12px 26px;
         font-size: 16px;
         font-weight: 600;
@@ -233,10 +238,15 @@
         </div>
 
         <div class="step" data-step="4">
-          <img class="gif" src="gifs/gif4.gif" alt="Big question" />
+          <img
+            class="gif"
+            id="question-gif"
+            src="gifs/gif4.gif"
+            alt="Big question"
+          />
           <div class="content">
             <h1>WILL YOU BE MY VALENTINE?</h1>
-            <p>Say yes plsplspls.</p>
+            <p id="plea-text">Say yes plsplspls.</p>
             <br>
             <div class="actions">
               <button class="primary" type="button" data-yes>
@@ -244,6 +254,20 @@
               </button>
               <button class="secondary" type="button" data-no>
                 Ayaw ko nga
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <img class="gif" src="gifs/finalgif.gif" alt="Happy valentines po!!!!" />
+          <div class="content">
+            <h1>YAYYYY!!!</h1>
+            <p>Can't wait to celebrate with you. I love you!</p>
+            <br>
+            <div class="actions">
+              <button class="primary" type="button" data-restart>
+                Replay
               </button>
             </div>
           </div>
@@ -256,7 +280,74 @@
       const nextButtons = document.querySelectorAll("[data-next]");
       const yesButton = document.querySelector("[data-yes]");
       const noButton = document.querySelector("[data-no]");
+      const actions = yesButton.parentElement;
+      const restartButton = document.querySelector("[data-restart]");
+      const questionGif = document.querySelector("#question-gif");
+      const pleaText = document.querySelector("#plea-text");
       let currentStep = 0;
+      let noCount = 0;
+      const getButtonMetrics = (button) => {
+        const styles = window.getComputedStyle(button);
+        return {
+          padY: parseFloat(styles.paddingTop),
+          padX: parseFloat(styles.paddingLeft),
+          fontSize: parseFloat(styles.fontSize),
+        };
+      };
+
+      const yesBase = getButtonMetrics(yesButton);
+      const noBase = getButtonMetrics(noButton);
+
+      const applyScale = (button, base, scale) => {
+        button.style.transform = "none";
+        button.style.fontSize = `${base.fontSize * scale}px`;
+        button.style.padding = `${base.padY * scale}px ${base.padX * scale}px`;
+      };
+
+      const noStates = [
+        {
+          text: "Say yes plsplspls.",
+          gif: "gifs/gif4.gif",
+          yesScale: 1,
+          noScale: 1,
+        },
+        {
+          text: "Oh nooo, are you sure?",
+          gif: "gifs/no1.gif",
+          yesScale: 1.3,
+          noScale: 0.85,
+        },
+        {
+          text: "Please say yes. I will be so happy!",
+          gif: "gifs/no2.gif",
+          yesScale: 1.6,
+          noScale: 0.7,
+        },
+        {
+          text: "One tiny yes? pretty please?",
+          gif: "gifs/no3.gif",
+          yesScale: 2.0,
+          noScale: 0.55,
+        },
+        {
+          text: "Last chance... say yes?",
+          gif: "gifs/no4.gif",
+          yesScale: 2.4,
+          noScale: 0.4,
+        },
+        {
+          text: "Okay, you win. Just press yes now.",
+          gif: "gifs/no5.gif",
+          yesScale: 2.8,
+          noScale: 0.25,
+        },
+        {
+          text: "Okay okay, YES is the only choice now!",
+          gif: "gifs/no6.gif",
+          yesScale: 3.2,
+          noScale: 0.2,
+        },
+      ];
 
       const setStep = (index) => {
         steps.forEach((step, i) => {
@@ -272,11 +363,32 @@
       });
 
       yesButton.addEventListener("click", () => {
-        yesButton.textContent = "Yay!";
+        setStep(4);
       });
 
       noButton.addEventListener("click", () => {
-        noButton.textContent = "Try again";
+        noCount = Math.min(noCount + 1, noStates.length - 1);
+        const state = noStates[noCount];
+        pleaText.textContent = state.text;
+        questionGif.src = state.gif;
+        applyScale(yesButton, yesBase, state.yesScale);
+        applyScale(noButton, noBase, state.noScale);
+        actions.classList.toggle("stacked", state.yesScale >= 2.0);
+        if (noCount === 6) {
+          noButton.style.display = "none";
+        }
+      });
+
+      restartButton.addEventListener("click", () => {
+        noCount = 0;
+        const state = noStates[0];
+        pleaText.textContent = state.text;
+        questionGif.src = state.gif;
+        applyScale(yesButton, yesBase, state.yesScale);
+        applyScale(noButton, noBase, state.noScale);
+        actions.classList.remove("stacked");
+        noButton.style.display = "";
+        setStep(0);
       });
     </script>
   </body>
